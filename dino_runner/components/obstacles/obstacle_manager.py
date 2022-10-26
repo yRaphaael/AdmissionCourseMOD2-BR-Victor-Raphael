@@ -8,7 +8,7 @@ class ObstacleManager:
 
     def update(self, game):
         image = [SMALL_CACTUS, LARGE_CACTUS]
-    
+
         if len(self.obstacles) == 0:
             self.obstacles.append(Cactus(image))
 
