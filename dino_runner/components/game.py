@@ -39,6 +39,9 @@ class Game:
             self.events()
             self.update()  
             self.draw() 
+    
+    def reset(self):
+        self.game_speed = 20
 
     def events(self):
         for event in pygame.event.get():
@@ -90,9 +93,10 @@ class Game:
             if event.type == pygame.QUIT:
                 self.playing = False
                 self.running = False
-                self.score = 0
-                self.game_speed = 20
             elif event.type == pygame.KEYDOWN:
+                if self.death_count > 0:
+                    self.score = 0
+                    self.game_speed = 20
                 self.run()
 
     def text_values(self, size, content, widht, height):
@@ -106,27 +110,22 @@ class Game:
         self.screen.fill((255, 255, 255))
         half_screen_width = SCREEN_WIDTH // 2
         half_screen_height = SCREEN_HEIGHT // 2
-
-
         font = pygame.font.Font(FONT_STYLE, 22)
+
         if self.death_count == 0:
             text = font.render("Press any key to start", True, (0, 0, 0))        
             text_rect = text.get_rect()
             text_rect.center = (half_screen_width, half_screen_height)
             self.screen.blit(text, text_rect)
         else:
-            self.text_values(22, "Press any key to restart" , half_screen_width,half_screen_height)
+            self.text_values(25, "Press any key to restart" , half_screen_width,half_screen_height)
             self.text_values(15, f"Your Score: {self.score}" , half_screen_width, half_screen_height +50)
             self.text_values(15, f"Life lost: {self.death_count}" , half_screen_width, half_screen_height +75)
             self.screen.blit(ICON, (half_screen_width -50, half_screen_height -200 ))
             self.screen.blit(GAME_OVER, (half_screen_width -200, half_screen_height -250 ))
             self.screen.blit(RESET, (half_screen_width -35, half_screen_height +200 ))
 
-        if self.death_count > 0:
-            return self.reset()
-
-    def reset(self):
-        self.game_speed = 20
+            
 
         pygame.display.flip()
         self.handle_events_on_menu()
