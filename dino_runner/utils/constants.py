@@ -16,6 +16,11 @@ RUNNING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
 ]
 
+RUNNING_AKUMA = [
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRunAkuma1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRunAkuma2.png")),
+]
+
 RUNNING_SHIELD = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
@@ -29,10 +34,16 @@ RUNNING_HAMMER = [
 JUMPING = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJump.png"))
 JUMPING_SHIELD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpShield.png"))
 JUMPING_HAMMER = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpHammer.png"))
+JUMPING_AKUMA = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoJumpAkuma.png"))
 
 DUCKING = [
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck1.png")),
     pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuck2.png")),
+]
+
+DUCKING_AKUMA = [
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuckAkuma1.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoDuckAkuma2.png")),
 ]
 
 DUCKING_SHIELD = [
@@ -64,6 +75,7 @@ BIRD = [
 CLOUD = pygame.image.load(os.path.join(IMG_DIR, 'Other/Cloud.png'))
 SHIELD = pygame.image.load(os.path.join(IMG_DIR, 'Other/shield.png'))
 HAMMER = pygame.image.load(os.path.join(IMG_DIR, 'Other/hammer.png'))
+AKUMA = pygame.image.load(os.path.join(IMG_DIR, 'Other/Akuma.png'))
 
 BG = pygame.image.load(os.path.join(IMG_DIR, 'Other/Track.png'))
 
@@ -73,4 +85,8 @@ GAME_OVER = pygame.image.load(os.path.join(IMG_DIR, 'Other/GameOver.png'))
 
 RESET = pygame.image.load(os.path.join(IMG_DIR, 'Other/Reset.png'))
 
+
 DEFAULT_TYPE = "default"
+SHIELD_TYPE = "shield"
+HAMMER_TYPE = "hammer"
+AKUMA_TYPE = "akuma"
