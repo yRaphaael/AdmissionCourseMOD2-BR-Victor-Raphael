@@ -1,6 +1,7 @@
 import pygame
+from pygame import mixer
 from dino_runner.components.dinosaur import Dinosaur
-from dino_runner.utils.constants import BG, DEFAULT_TYPE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, GAME_OVER, RESET
+from dino_runner.utils.constants import BG, DEFAULT_TYPE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, GAME_OVER, RESET, SNOWFALL
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.components.power_ups.power_up_manager import PowerUpManager
 from dino_runner.utils.text_utils import draw_message_component
@@ -11,6 +12,9 @@ FONT_STYLE = "freesansbold.ttf"
 class Game:
     def __init__(self):
         pygame.init()
+        pygame.mixer.music.load(SNOWFALL)
+        pygame.mixer.music.play(-1)
+        pygame.mixer.music.set_volume(0.5)
         pygame.display.set_caption(TITLE)
         pygame.display.set_icon(ICON)
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -32,20 +36,22 @@ class Game:
         while self.running:
             if not self.playing:
                 self.show_menu()
+                pygame.mixer.music.stop()
         pygame.display.quit()
         pygame.quit()
 
 
     def run(self):
         # Game loop: events - update - draw
+        pygame.mixer.music.play()
+        pygame.mixer.music.set_volume(0.5)
         self.playing = True
         self.obstacle_manager.reset_obstacles()
         self.power_up_manager.reset_power_ups()
         while self.playing:
             self.events()
             self.update()  
-            self.draw() 
-
+            self.draw()
 
     def events(self):
         for event in pygame.event.get():

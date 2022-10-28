@@ -3,7 +3,7 @@ import random
 from dino_runner.components.obstacles.cactus import Cactus
 from dino_runner.components.obstacles.bird import Bird
 from dino_runner.components.power_ups.power_up_manager import PowerUpManager
-
+from dino_runner.utils.constants import AKUMA_TYPE
 class ObstacleManager:
     def __init__(self):
         self.obstacles = []
@@ -25,6 +25,9 @@ class ObstacleManager:
                         break
                     else:
                         self.obstacles.remove(obstacle)
+                    
+                    if game.player.type == AKUMA_TYPE:
+                        game.game_speed = 20
         
     def draw(self, screen):
         for obstacle in self.obstacles:
